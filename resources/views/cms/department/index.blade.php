@@ -35,13 +35,26 @@
                             @foreach ($departments as $department)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td><img style="height: 100px;" src="{{ asset('assets/uploads/departments/'.$department->image) }}" alt="{{ $department->name }}"></td>
+                                    <td><img style="height: 100px;"
+                                            src="{{ asset('assets/uploads/departments/' . $department->image) }}"
+                                            alt="{{ $department->name }}"></td>
                                     <td>{{ $department->name }}</td>
                                     <td>{!! $department->description !!}</td>
                                     <td>{{ $department->status }}</td>
                                     <td>{{ $department->created_date }}</td>
-                                    <td><div class="row">
-                                        </div></td>
+                                    <td>
+                                        <div class="row">
+                                            <a href="{{ route('cms.department.edit', ['department' => $department->id]) }}"><i
+                                                    class="fa fa-edit"></i></a>
+                                            <form action="{{ route('cms.department.destroy', ['department' => $department->id]) }}"
+                                                method="post">
+                                                @csrf
+                                                @method('Delete')
+                                                <button type="button" onclick="confirmBox(this)"
+                                                    style="border: 0px;background-color:transparent;"><i
+                                                        class="fa fa-trash text-red"></i></button>
+                                            </form>
+                                        </div>
                                 </tr>
                             @endforeach
                         </tbody>

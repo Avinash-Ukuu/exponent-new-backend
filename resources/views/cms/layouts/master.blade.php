@@ -37,6 +37,10 @@
         href="{{ asset('assets/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet"
         href="{{ asset('assets/adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+    <!-- summernote -->
+    <link rel="stylesheet" href="{{ asset('assets/adminlte/plugins/summernote/summernote-bs4.min.css') }}">
+     <!-- toastr -->
+    <link rel="stylesheet" href="{{ asset('assets/adminlte/plugins/toastr/toastr.min.css') }}">
     @yield('headerLinks')
 </head>
 
@@ -114,7 +118,41 @@
     <script src="{{ asset('assets/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('assets/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('assets/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+    <!-- Summernote -->
+    <script src="{{ asset('assets/adminlte/plugins/summernote/summernote-bs4.min.js') }}"></script>
+    <!-- Toastr -->
+    <script src="{{ asset('assets/adminlte/plugins/toastr/toastr.min.js') }}"></script>
     @yield('footerScript')
+    <script>
+
+        if ("{{ session()->has('success') }}") {
+            let message = "{{ session()->get('success') }}";
+            toastr.success(message);
+        }
+
+        if ("{{ session()->has('error') }}") {
+            let message = "{{ session()->get('error') }}";
+            toastr.error(message);
+        }
+
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                toastr.error("{{ $error }}");
+            @endforeach
+        @endif
+
+        function confirmBox(submitBtnTarget) {
+            let result = confirm("Want to delete?");
+            if (result) {
+                $(submitBtnTarget).closest("form").submit();
+            }
+
+        }
+
+        $(document).ready(function() {
+            $('#summernote').summernote();
+        });
+    </script>
 </body>
 
 </html>
