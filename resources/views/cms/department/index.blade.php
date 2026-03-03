@@ -40,7 +40,12 @@
                                             alt="{{ $department->name }}"></td>
                                     <td>{{ $department->name }}</td>
                                     <td>{!! $department->description !!}</td>
-                                    <td>{{ $department->status }}</td>
+                                    <td>
+                                        @if($department->status == 1)
+                                            <span class="badge badge-success">Active</span>
+                                        @else
+                                            <span class="badge badge-danger">In Active</span>
+                                        @endif
                                     <td>{{ $department->created_date }}</td>
                                     <td>
                                         <div class="row">
