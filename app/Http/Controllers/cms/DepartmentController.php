@@ -125,18 +125,18 @@ class DepartmentController extends Controller
      */
     public function destroy(string $id)
     {
-        $department   =   Department::find($id);
-        if (empty($department)) {
-            Session::flash("error", "Department Already Deleted");
-            return back();
-        }
+        // $department   =   Department::find($id);
+        // if (empty($department)) {
+        //     Session::flash("error", "Department Already Deleted");
+        //     return back();
+        // }
 
-        if (file_exists("assets/uploads/departments/" . $department->image)) {
-            File::delete("assets/uploads/departments/" . $department->image);
-        }
+        // if (file_exists("assets/uploads/departments/" . $department->image)) {
+        //     File::delete("assets/uploads/departments/" . $department->image);
+        // }
 
-        $department->delete();
-        Session::flash("success", "User Account Deleted");
-        return redirect(route("cms.department.index"));
+        // $department->delete();
+        // Session::flash("success", "User Account Deleted");
+        // return redirect(route("cms.department.index"));
     }
 }

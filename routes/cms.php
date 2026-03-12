@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\cms\CourseController;
 use App\Http\Controllers\cms\DashboardController;
 use App\Http\Controllers\cms\DepartmentController;
 use Illuminate\Support\Facades\Route;
@@ -7,4 +8,5 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('cms')->name('cms.')->middleware(['auth'])->group(function () {
     Route::get('dashboard',         [DashboardController::class,'dashboard'])->name('dashboard');
     Route::resource('department',   DepartmentController::class);
+    Route::resource('course',       CourseController::class);
 });

@@ -6,7 +6,7 @@
                 <div class="col">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('cms.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Department Index</li>
+                        <li class="breadcrumb-item active">Department Form</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -15,7 +15,7 @@
     <div class="col-12">
         <div class="card card-primary card-outline">
             <div class="card-header">
-                <h3 class="card-title">Course List</h3>
+                <h3 class="card-title">Department List</h3>
             </div>
             <div class="card-body">
                 <form action="{{ $url }}" method="POST" enctype="multipart/form-data">

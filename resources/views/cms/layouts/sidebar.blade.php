@@ -72,6 +72,7 @@
                     </ul>
                 </li> --}}
 
+                {{-- Department --}}
                 <li class="nav-item @if (in_array(Route::currentRouteName(), ['cms.department.index', 'cms.department.create'])) menu-open @endif">
                     <a href="#" class="nav-link  @if (in_array(Route::currentRouteName(), ['cms.department.index', 'cms.department.create'])) active @endif">
                         <i class="nav-icon fas fa-building"></i>
@@ -88,6 +89,30 @@
                         <li class="nav-item">
                             <a href="{{ route('cms.department.create') }}"
                                 class="nav-link @if (Route::currentRouteName() == 'cms.department.create') active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                {{-- Courses --}}
+                <li class="nav-item @if (in_array(Route::currentRouteName(), ['cms.course.index', 'cms.course.create'])) menu-open @endif">
+                    <a href="#" class="nav-link  @if (in_array(Route::currentRouteName(), ['cms.course.index', 'cms.course.create'])) active @endif">
+                        <i class="nav-icon fas fa-book-open"></i>
+                        <p> Course <i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('cms.course.index') }}"
+                                class="nav-link @if (Route::currentRouteName() == 'cms.course.index') active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('cms.course.create') }}"
+                                class="nav-link @if (Route::currentRouteName() == 'cms.course.create') active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Create</p>
                             </a>

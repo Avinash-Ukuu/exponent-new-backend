@@ -6,7 +6,7 @@
                 <div class="col">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('cms.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Department Index</li>
+                        <li class="breadcrumb-item active">Course Index</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -15,7 +15,7 @@
     <div class="col-12">
         <div class="card card-primary card-outline">
             <div class="card-header">
-                <h3 class="card-title">Department List</h3>
+                <h3 class="card-title">Course List</h3>
             </div>
             <div class="table-responsive">
                 <div class="card-body">
@@ -23,42 +23,42 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Image</th>
+                                <th>Department</th>
+                                <th>Course Code</th>
                                 <th>Name</th>
+                                <th>Course Type</th>
+                                <th>Duration</th>
+                                <th>Semester</th>
                                 <th>Description</th>
+                                <th>Eligibility</th>
                                 <th>Status</th>
                                 <th>Created Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($departments as $department)
+                            @foreach ($courses as $course)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td><img style="height: 100px;"
-                                            src="{{ asset('assets/uploads/departments/' . $department->image) }}"
-                                            alt="{{ $department->name }}"></td>
-                                    <td>{{ $department->name }}</td>
-                                    <td>{!! $department->description !!}</td>
+                                    <td>{{ $course->department->name ?? 'N/A' }}</td>
+                                    <td>{{ $course->course_code }}</td>
+                                    <td>{{ $course->name }}</td>
+                                    <td>{{ $course->course_type }}</td>
+                                    <td>{{ $course->course_duration }}</td>
+                                    <td>{{ $course->curs_semester }}</td>
+                                    <td>{!! $course->description !!}</td>
+                                    <td>{{ $course->course_eligibility }}</td>
                                     <td>
-                                        @if($department->status == 1)
+                                        @if($course->status == 1)
                                             <span class="badge badge-success">Active</span>
                                         @else
                                             <span class="badge badge-danger">In Active</span>
                                         @endif
-                                    <td>{{ $department->created_date }}</td>
+                                    <td>{{ $course->date }}</td>
                                     <td>
                                         <div class="row">
-                                            <a href="{{ route('cms.department.edit', ['department' => $department->id]) }}"><i
+                                            <a href="{{ route('cms.course.edit', ['course' => $course->id]) }}"><i
                                                     class="fa fa-edit"></i></a>
-                                            {{-- <form action="{{ route('cms.department.destroy', ['department' => $department->id]) }}"
-                                                method="post">
-                                                @csrf
-                                                @method('Delete')
-                                                <button type="button" onclick="confirmBox(this)"
-                                                    style="border: 0px;background-color:transparent;"><i
-                                                        class="fa fa-trash text-red"></i></button>
-                                            </form> --}}
                                         </div>
                                     </td>
                                 </tr>
